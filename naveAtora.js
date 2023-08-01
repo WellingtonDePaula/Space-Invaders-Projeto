@@ -3,8 +3,8 @@ var yNave = 620;
 var velocidadeXNave = 6;
 var tiroChamado = false;
 var velocidadeTiro = 25;
-var xTiro = [xNave+17, xNave+17];
-var yTiro = [yNave-50, yNave-50];
+var xTiro = xNave+17
+var yTiro = yNave-50
 var tiroSaiuDaNave = false;
 
 function desenhaNave() {
@@ -22,18 +22,14 @@ function movimentaNave() {
 }
 
 function criaTiro() {
-    for(let i = 0; i < 2; i ++) {
-        if(tiroChamado === true) {
-            fill(255);
-            rect(xTiro[i], yTiro[i], 15, 35);
-            yTiro[i] -= velocidadeTiro;
-            tiroSaiuDaNave = true;
-        }
+    if(tiroChamado === true) {
+        fill(255);
+        rect(xTiro[i], yTiro[i], 15, 35);
+        yTiro[i] -= velocidadeTiro;
+        tiroSaiuDaNave = true;
     }
-    for(let i = 0; i < 2; i++) {
-        if(yTiro[i] <= -50) {
-            yTiro[i] = yNave-50; tiroChamado = false;
-        }
+    if(yTiro[i] <= -50) {
+        yTiro[i] = yNave-50; tiroChamado = false;
     }
 }
 function verificaSeOTiroSaiuDaTela() {
