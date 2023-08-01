@@ -24,17 +24,17 @@ function movimentaNave() {
 function criaTiro() {
     if(tiroChamado === true) {
         fill(255);
-        rect(xTiro[i], yTiro[i], 15, 35);
-        yTiro[i] -= velocidadeTiro;
+        rect(xTiro, yTiro, 15, 35);
+        yTiro -= velocidadeTiro;
         tiroSaiuDaNave = true;
     }
-    if(yTiro[i] <= -50) {
-        yTiro[i] = yNave-50; tiroChamado = false;
+    if(yTiro <= -50) {
+        yTiro = yNave-50; tiroChamado = false;
     }
 }
 function verificaSeOTiroSaiuDaTela() {
     if(tiroSaiuDaNave === true) {
-        xTiro[0] = xNave+17;
+        xTiro = xNave+17;
     }
 }
 
