@@ -10,7 +10,7 @@ function setup() {
     desenhaNave();
     movimentaNave();
     criaTiro();
-    verificaSeOTiroSaiuDaTela();
+    print(tiroChamado, tiroSaiuDaNave)
   }
 
   function desenhaCenario() {

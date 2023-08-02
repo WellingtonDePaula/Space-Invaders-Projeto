@@ -3,9 +3,10 @@ var yNave = 620;
 var velocidadeXNave = 6;
 var tiroChamado = false;
 var velocidadeTiro = 25;
-var xTiro = xNave+17
-var yTiro = yNave-50
+var xTiro;
+var yTiro = yNave-50;
 var tiroSaiuDaNave = false;
+var podeAtirar = true;
 
 function desenhaNave() {
     fill(0);
@@ -20,26 +21,24 @@ function movimentaNave() {
         xNave += velocidadeXNave;
     }
 }
-
+function keyTyped() {
+    if(podeAtirar === true) {
+        if(key === "z") {
+            tiroChamado = true; tiroSaiuDaNave = true; podeAtirar = false;
+        }
+    }
+    return false;
+}
 function criaTiro() {
+    if(tiroSaiuDaNave === true) {
+        xTiro = xNave+17; tiroSaiuDaNave = false;
+    }
     if(tiroChamado === true) {
         fill(255);
         rect(xTiro, yTiro, 15, 35);
         yTiro -= velocidadeTiro;
-        tiroSaiuDaNave = true;
     }
     if(yTiro <= -50) {
-        yTiro = yNave-50; tiroChamado = false;
-    }
-}
-function verificaSeOTiroSaiuDaTela() {
-    if(tiroSaiuDaNave === true) {
-        xTiro = xNave+17;
-    }
-}
-
-function keyTyped() {
-    if(key === "z") {
-        tiroChamado = true;
+        yTiro = yNave-50; tiroChamado = false; podeAtirar = true;
     }
 }
