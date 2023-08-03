@@ -29,23 +29,13 @@ function movimentaNave() {
         }
     }
 }
-function keyTyped() {
-    if(podeAtirar === true) {
-        if(key === "z") {
-            tiroChamado = true;
-            tiroSaiuDaNave = true;
-            podeAtirar = false;
-        }
-    }
-    return false;
-}
 function criaTiro() {
     if(tiroSaiuDaNave === true) {
         xTiro = xNave+35; tiroSaiuDaNave = false; yTiro = 570;
     }
     if(tiroChamado === true) {
         fill(31, 159, 227);
-        strokeWeight(2);
+        strokeWeight(2.5);
         stroke(0);
         rect(xTiro, yTiro, larguraDoTiro, alturaDoTiro);
         yTiro -= velocidadeTiro;
@@ -61,7 +51,7 @@ function podeSeMoverX2() {
     return xNave <= 1231;
 }
 function colisaoTiroInimigo() {
-    if(xInimigo + larguraInimigo+10 > xTiro + larguraDoTiro && xInimigo < xTiro && yInimigo + alturaInimigo-2 > yTiro) {
+    if(xInimigo + larguraInimigo > xTiro && xInimigo < xTiro + larguraDoTiro && yInimigo + alturaInimigo-2 > yTiro) {
         xInimigo = 2000; colidiu = true;
     }
     if(colidiu === true) {

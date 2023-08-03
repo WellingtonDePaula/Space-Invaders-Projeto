@@ -10,6 +10,7 @@ function setup() {
     background(15);
     desenhaCenario();
     desenhaNave();
+    criaMiraLaser();
     movimentaNave();
     criaNavesInimigas();
     criaTiro();
