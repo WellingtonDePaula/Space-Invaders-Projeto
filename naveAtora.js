@@ -45,6 +45,8 @@ function criaTiro() {
     }
     if(tiroChamado === true) {
         fill(31, 159, 227);
+        strokeWeight(2);
+        stroke(0);
         rect(xTiro, yTiro, larguraDoTiro, alturaDoTiro);
         yTiro -= velocidadeTiro;
     }
@@ -60,7 +62,7 @@ function podeSeMoverX2() {
 }
 function colisaoTiroInimigo() {
     if(xInimigo + larguraInimigo+10 > xTiro + larguraDoTiro && xInimigo < xTiro && yInimigo + alturaInimigo-2 > yTiro) {
-        yInimigo = 2000; xInimigo = 2000; colidiu = true;
+        xInimigo = 2000; colidiu = true;
     }
     if(colidiu === true) {
         yTiro = 570; colidiu = false; podeAtirar = true; tiroChamado = false;

@@ -19,5 +19,6 @@ function setup() {
 
   function desenhaCenario() {
     fill(30);
+    noStroke();
     rect(200, 0, 1095, alturaDaTela);
   }
