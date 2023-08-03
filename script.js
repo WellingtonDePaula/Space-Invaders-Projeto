@@ -1,5 +1,7 @@
+//variáveis da tela
 var alturaDaTela = innerHeight;
 var larguraDaTela = innerWidth;
+//código
 function setup() {
     createCanvas(larguraDaTela, alturaDaTela);
   }
@@ -9,8 +11,10 @@ function setup() {
     desenhaCenario();
     desenhaNave();
     movimentaNave();
+    criaNavesInimigas();
     criaTiro();
-    print(tiroChamado, tiroSaiuDaNave)
+    movimentaInimigo();
+    colisaoTiroInimigo();
   }
 
   function desenhaCenario() {

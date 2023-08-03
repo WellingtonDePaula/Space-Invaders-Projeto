@@ -1,44 +1,68 @@
+//Variáveis da nave
 var xNave = 697.5;
 var yNave = 620;
-var velocidadeXNave = 6;
+var velocidadeXNave = 5;
+//variáveis do tiro
 var tiroChamado = false;
 var velocidadeTiro = 25;
 var xTiro;
 var yTiro = yNave-50;
+var larguraDoTiro = 10;
+var alturaDoTiro = 35;
 var tiroSaiuDaNave = false;
 var podeAtirar = true;
-
+//colisão
+var colidiu = false;
+//código
 function desenhaNave() {
-    fill(0);
-    rect(xNave, yNave, 50, 80);
+    image(naveAtora, xNave, yNave, 80, 80);
 }
-
 function movimentaNave() {
     if(keyIsDown(LEFT_ARROW)) {
-        xNave -= velocidadeXNave;
+        if(podeSeMoverX1()) {
+            xNave -= velocidadeXNave;
+        }
     }
     if(keyIsDown(RIGHT_ARROW)) {
-        xNave += velocidadeXNave;
+        if(podeSeMoverX2()) {
+            xNave += velocidadeXNave;
+        }
     }
 }
 function keyTyped() {
     if(podeAtirar === true) {
         if(key === "z") {
-            tiroChamado = true; tiroSaiuDaNave = true; podeAtirar = false;
+            tiroChamado = true;
+            tiroSaiuDaNave = true;
+            podeAtirar = false;
         }
     }
     return false;
 }
 function criaTiro() {
     if(tiroSaiuDaNave === true) {
-        xTiro = xNave+17; tiroSaiuDaNave = false;
+        xTiro = xNave+35; tiroSaiuDaNave = false; yTiro = 570;
     }
     if(tiroChamado === true) {
-        fill(255);
-        rect(xTiro, yTiro, 15, 35);
+        fill(31, 159, 227);
+        rect(xTiro, yTiro, larguraDoTiro, alturaDoTiro);
         yTiro -= velocidadeTiro;
     }
     if(yTiro <= -50) {
         yTiro = yNave-50; tiroChamado = false; podeAtirar = true;
+    }
+}
+function podeSeMoverX1() {
+    return xNave >= 215;
+}
+function podeSeMoverX2() {
+    return xNave <= 1231;
+}
+function colisaoTiroInimigo() {
+    if(xInimigo + larguraInimigo+10 > xTiro + larguraDoTiro && xInimigo < xTiro && yInimigo + alturaInimigo-2 > yTiro) {
+        yInimigo = 2000; xInimigo = 2000; colidiu = true;
+    }
+    if(colidiu === true) {
+        yTiro = 570; colidiu = false; podeAtirar = true; tiroChamado = false;
     }
 }
