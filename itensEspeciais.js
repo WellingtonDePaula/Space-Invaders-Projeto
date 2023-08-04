@@ -1,4 +1,6 @@
+//variáveis do laser
 var laserAtivo = false;
+//código
 function criaMiraLaser() {
     if(laserAtivo === true) {
         stroke(255, 12, 12);

@@ -5,7 +5,6 @@ var larguraDaTela = innerWidth;
 function setup() {
     createCanvas(larguraDaTela, alturaDaTela);
   }
-  
   function draw() {
     background(15);
     desenhaCenario();
@@ -17,7 +16,6 @@ function setup() {
     movimentaInimigo();
     colisaoTiroInimigo();
   }
-
   function desenhaCenario() {
     fill(30);
     noStroke();

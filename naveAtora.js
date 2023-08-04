@@ -51,8 +51,10 @@ function podeSeMoverX2() {
     return xNave <= 1231;
 }
 function colisaoTiroInimigo() {
-    if(xInimigo + larguraInimigo > xTiro && xInimigo < xTiro + larguraDoTiro && yInimigo + alturaInimigo-2 > yTiro) {
-        xInimigo = 2000; colidiu = true;
+    for(i = 0; i < imagemInimigos.length; i ++) {
+        if(xInimigo[i] + larguraInimigo > xTiro && xInimigo[i] < xTiro + larguraDoTiro && yInimigo[i] + alturaInimigo-2 > yTiro) {
+            xInimigo[i] = 2000; colidiu = true;
+        }
     }
     if(colidiu === true) {
         yTiro = 570; colidiu = false; podeAtirar = true; tiroChamado = false;

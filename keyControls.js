@@ -1,3 +1,4 @@
+//código do movimento
 function keyTyped() {
     if(podeAtirar === true) {
         if(key === "z") {
