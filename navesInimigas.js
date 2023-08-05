@@ -8,6 +8,7 @@ var podeIrParaDireita = true;
 var podeIrParaEsquerda = false;
 var larguraInimigo = 35;
 var alturaInimigo = 35;
+var velocidadeInimigo = 2;
 //código
 function criaNavesInimigas() {
     for(let i = 0; i < imagemInimigos.length; i ++)
@@ -16,16 +17,16 @@ function criaNavesInimigas() {
 function movimentaInimigo() {
     for(let i = 0; i < imagemInimigos.length; i ++) {
         if(yInimigo[i] !== yInimigoDesce) {
-            yInimigo[i] += 2;
+            yInimigo[i] += velocidadeInimigo;
         }
         if(yInimigo[i] === yInimigoDesce && podeIrParaDireita === true) {
-            xInimigo[i] += 1;
+            xInimigo[i] += velocidadeInimigo;
         }
         if(xInimigo[i] === xInimigoMaximo[i]) {
             podeIrParaDireita = false; podeIrParaEsquerda = true;
         }
         if(yInimigo[i] === yInimigoDesce && podeIrParaEsquerda === true) {
-            xInimigo[i] -= 1;
+            xInimigo[i] -= velocidadeInimigo;
         }
         if(xInimigo[i] === xInimigoMinimo[i]) {
         podeIrParaEsquerda = false; podeIrParaDireita = true;
