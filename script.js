@@ -15,6 +15,7 @@ function setup() {
     criaTiro();
     movimentaInimigo();
     colisaoTiroInimigo();
+    criaTickRate();
   }
   function desenhaCenario() {
     fill(30);
