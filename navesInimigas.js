@@ -1,7 +1,7 @@
 //variáveis do inimigo
-var xInimigo = [240,570, 900, 1230];
+var xInimigo = [240, 570, 900, 1230];
 var yInimigo = [0, 0, 0, 0];
-var yInimigoDesce = [150, 200, 250, 300];
+var yInimigoDesce = [150, 150, 150, 150];
 var contagem = 4;
 var podeIrParaDireita = true;
 var podeIrParaEsquerda = false;
@@ -10,6 +10,10 @@ var alturaInimigo = 35;
 var velocidadeInimigo = 2;
 var tickRate = 0;
 var podeDescer = true;
+//variáveis do tiro inimigo
+var xTiroInimigo;
+var yTiroInimigo;
+var tiroInimigoChamado = true;
 //código
 function criaTickRate() {
     tickRate += 0.5;
@@ -43,4 +47,17 @@ function movimentaInimigo() {
             podeDescer = false;
         }
     }
+}
+function criaTiroInimigo() {
+    xTiroInimigo = xInimigo[0, 1, 2, 3];
+    yTiroInimigo = yInimigo[0, 1, 2, 3];
+    //for(let i = 0; i < xTiroInimigo.length; i ++) {
+        if(tiroInimigoChamado === true) {
+            fill(255);
+            strokeWeight(2.5);
+            stroke(0);
+            rect(xTiroInimigo[0], yTiroInimigo[0], larguraDoTiro, alturaDoTiro);
+            rect(xTiroInimigo[1], yTiroInimigo[1], larguraDoTiro, alturaDoTiro);
+        }
+    //}
 }
