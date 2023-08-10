@@ -1,5 +1,5 @@
 //Variáveis da nave
-var xNave = 697.5;
+var xNave = 697;
 var yNave = 620;
 var velocidadeXNave = 5;
 //variáveis do tiro
@@ -16,6 +16,7 @@ var colidiu = false;
 //código
 function desenhaNave() {
     image(naveAtora, xNave, yNave, 80, 80);
+    criaTiro();
 }
 function movimentaNave() {
     if(keyIsDown(LEFT_ARROW)) {
@@ -48,7 +49,7 @@ function podeSeMoverX1() {
     return xNave >= 215;
 }
 function podeSeMoverX2() {
-    return xNave <= 1231;
+    return xNave <= 1215;
 }
 function colisaoTiroInimigo() {
     for(i = 0; i < imagemInimigos.length; i ++) {

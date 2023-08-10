@@ -12,11 +12,10 @@ function setup() {
     criaMiraLaser();
     movimentaNave();
     criaNavesInimigas();
-    criaTiro();
+    criaTiroInimigo();
     movimentaInimigo();
     colisaoTiroInimigo();
     criaTickRate();
-    criaTiroInimigo();
   }
   function desenhaCenario() {
     fill(30);
