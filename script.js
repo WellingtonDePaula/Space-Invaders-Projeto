@@ -6,17 +6,22 @@ function setup() {
     createCanvas(larguraDaTela, alturaDaTela);
   }
   function draw() {
+    //cenário e processos de início
     background(15);
     desenhaCenario();
-    desenhaNave();
-    criaMiraLaser();
-    movimentaNave();
-    criaNavesInimigas();
-    criaTiroInimigo();
-    movimentaInimigo();
-    colisaoTiroInimigo();
     criaTickRate();
-  }
+    //nave atora
+    desenhaNave();
+    movimentaNave();
+    criaTiro();
+    colisaoTiroInimigo();
+    //naves inimigas
+    criaNavesInimigas();
+    movimentaInimigo();
+    criaTiroInimigo();
+    //buffs
+    criaMiraLaser();
+    }
   function desenhaCenario() {
     fill(30);
     noStroke();
