@@ -2,6 +2,9 @@
 var xNave = 697;
 var yNave = 620;
 var velocidadeXNave = 5;
+var naveViva = true;
+var larguraNave = 80;
+var alturaNave = 80;
 //variáveis do tiro
 var tiroChamado = false;
 var velocidadeTiro = 25;
@@ -15,15 +18,17 @@ var podeAtirar = true;
 var colidiu = false;
 //código
 function desenhaNave() {
-    image(naveAtora, xNave, yNave, 80, 80);
+    if(naveViva === true) {
+        image(naveAtora, xNave, yNave, larguraNave, alturaNave);
+    }
 }
 function movimentaNave() {
-    if(keyIsDown(LEFT_ARROW)) {
+    if(keyIsDown(LEFT_ARROW) && naveViva === true) {
         if(podeSeMoverX1()) {
             xNave -= velocidadeXNave;
         }
     }
-    if(keyIsDown(RIGHT_ARROW)) {
+    if(keyIsDown(RIGHT_ARROW) && naveViva === true) {
         if(podeSeMoverX2()) {
             xNave += velocidadeXNave;
         }
@@ -33,7 +38,7 @@ function criaTiro() {
     if(tiroSaiuDaNave === true) {
         xTiro = xNave+35; tiroSaiuDaNave = false; yTiro = 570;
     }
-    if(tiroChamado === true) {
+    if(tiroChamado === true && naveViva === true) {
         fill(31, 159, 227);
         strokeWeight(2.5);
         stroke(0);

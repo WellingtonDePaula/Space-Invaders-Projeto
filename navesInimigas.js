@@ -15,6 +15,9 @@ var inimigoVivo = [true, true, true, true];
 var xTiroInimigo = [];
 var yTiroInimigo = [];
 var tiroInimigoChamado = false;
+var tiroPodeExistir = [true, true, true, true];
+//variáveis do gameOver
+var jogadorPerdeu = false;
 //código
 function criaTickRate() {
     tickRate += 0.5;
@@ -56,8 +59,9 @@ function criaTiroInimigo() {
             tiroInimigoChamado = true;
             xTiroInimigo[i] = xInimigo[i];
             yTiroInimigo[i] = yInimigo[i];
+            tiroPodeExistir[i] = true;
         }
-        if(tiroInimigoChamado === true && inimigoVivo[i] === true) {
+        if(tiroInimigoChamado === true && inimigoVivo[i] === true && tiroPodeExistir[i] === true) {
             yTiroInimigo[i] += velocidadeTiro;
             fill(255, 0, 0);
             strokeWeight(1.5);
@@ -68,4 +72,25 @@ function criaTiroInimigo() {
             tiroInimigoChamado = false;
         }
     }
+}
+function colisaoTiroInimigoComANave() {
+    for(i = 0; i < imagemInimigos.length; i ++) {
+        if(xNave + larguraNave > xTiroInimigo[i] && xNave < xTiroInimigo[i] + larguraDoTiro && yNave - alturaNave < yTiroInimigo[i] && yNave + alturaNave > yTiroInimigo[i]) {
+            naveViva = false;
+            xNave = 2000;
+            tiroPodeExistir[i] = false;
+            jogadorPerdeu = true;
+        }
+        if(jogadorPerdeu === true) {
+            gameOver();
+            inimigoVivo[i] = false;
+        }
+    }
+}
+function gameOver() {
+    stroke(0);
+    textAlign(CENTER);
+    textSize(100);
+    fill(255, 0, 0);
+    text("GAME OVER", larguraDaTela/2 - 20, alturaDaTela/2 + 20)
 }

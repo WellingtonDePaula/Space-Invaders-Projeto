@@ -15,6 +15,7 @@ function setup() {
     movimentaNave();
     criaTiro();
     colisaoTiroInimigo();
+    colisaoTiroInimigoComANave();
     //naves inimigas
     criaNavesInimigas();
     movimentaInimigo();
