@@ -56,9 +56,16 @@ function podeSeMoverX2() {
     return xNave <= 1215;
 }
 function colisaoTiroInimigo() {
-    for(i = 0; i < imagemInimigos.length; i ++) {
-        if(xInimigo[i] + larguraInimigo > xTiro && xInimigo[i] < xTiro + larguraDoTiro && yInimigo[i] + alturaInimigo-2 > yTiro && inimigoVivo[i] === true) {
-            inimigoVivo[i] = false; colidiu = true;
+    //wave 1
+    for(i = 0; i < wave1ImagemInimigos.length; i ++) {
+        if(wave1XInimigo[i] + larguraInimigo > xTiro && wave1XInimigo[i] < xTiro + larguraDoTiro && wave1YInimigo[i] + alturaInimigo-2 > yTiro && wave1InimigoVivo[i] === true) {
+            wave1InimigoVivo[i] = false; colidiu = true;
+        }
+    }
+    //wave 2
+    for(i = 0; i < wave2ImagemInimigos.length; i ++) {
+        if(wave2XInimigo[i] + larguraInimigo > xTiro && wave2XInimigo[i] < xTiro + larguraDoTiro && wave2YInimigo[i] + alturaInimigo-2 > yTiro && wave2InimigoVivo[i] === true) {
+            wave2InimigoVivo[i] = false; colidiu = true;
         }
     }
     if(colidiu === true) {
