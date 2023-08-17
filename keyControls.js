@@ -7,7 +7,7 @@ function keyTyped() {
             podeAtirar = false;
         }
     }
-    if(key === "x") {
+    if(key === "x" && laserPego === true) {
         laserAtivo = true;
     } else {
         laserAtivo = false;

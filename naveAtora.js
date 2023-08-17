@@ -3,7 +3,7 @@ var xNave = 697;
 var yNave = 620;
 var velocidadeXNave = 5;
 var naveViva = true;
-var larguraNave = 80;
+var larguraNave = 70;
 var alturaNave = 80;
 //variáveis do tiro
 var tiroChamado = false;
@@ -36,7 +36,7 @@ function movimentaNave() {
 }
 function criaTiro() {
     if(tiroSaiuDaNave === true) {
-        xTiro = xNave+35; tiroSaiuDaNave = false; yTiro = 570;
+        xTiro = xNave+32; tiroSaiuDaNave = false; yTiro = 570;
     }
     if(tiroChamado === true && naveViva === true) {
         fill(31, 159, 227);

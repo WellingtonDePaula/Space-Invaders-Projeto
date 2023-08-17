@@ -10,6 +10,11 @@ function setup() {
     background(15);
     desenhaCenario();
     criaTickRate();
+    //buffs
+    criaMiraLaser();
+    horaDoLaserAparecer();
+    criaLaserPegável();
+    pegaLaser();
     //nave atora
     desenhaNave();
     movimentaNave();
@@ -20,8 +25,6 @@ function setup() {
     movimentaInimigo();
     criaTiroInimigo();
     colisaoTiroInimigoComANave();
-    //buffs
-    criaMiraLaser();
     }
   function desenhaCenario() {
     fill(30);

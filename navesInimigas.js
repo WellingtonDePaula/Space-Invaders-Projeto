@@ -13,7 +13,7 @@ var tickRate = 0;
 var wave1InimigoVivo = [true, true, true, true];
 //variáveis do inimigo wave 2
 var wave2XInimigo = [240, 400, 570, 730, 900, 1070, 1230];
-var wave2YInimigo = [-100, -100, -100, -100, -100, -100, -100];
+var wave2YInimigo = [-250, -250, -250, -250, -250, -250, -250];
 var wave2XInimigoMaximo = [270, 430, 600, 760, 930, 1200, 1260];
 var wave2XInimigoMinimo = [210, 370, 540, 700, 870, 1140, 1200];
 var wave2YInimigoDesce = 150;
@@ -41,7 +41,7 @@ function criaNavesInimigas() {
         }
     }
     for(let i = 0; i < wave2ImagemInimigos.length; i ++) {
-        if(wave1InimigoVivo[0, 1, 2, 3] === false && wave2InimigoVivo[i] === true) {
+        if(wave1InimigoVivo[0, 1, 2, 3] === false && wave2InimigoVivo[i] === true && laserPego === true) {
             image(wave2ImagemInimigos[i], wave2XInimigo[i], wave2YInimigo[i], larguraInimigo, alturaInimigo);
         }
     }
@@ -70,27 +70,28 @@ function movimentaInimigo() {
     //wave 2
     for(let i = 0; i < wave2ImagemInimigos.length; i ++) {
         if(wave1InimigoVivo[0, 1, 2, 3] === false) {
-            if(wave2YInimigo[i] !== wave2YInimigoDesce) {
+            if(wave2YInimigo[i] !== wave2YInimigoDesce && laserPego === true) {
                 wave2YInimigo[i] += velocidadeInimigo;
             }
-            if(wave2XInimigo[i] === wave2XInimigoMaximo[i] && wave2InimigoVivo[i] === true) {
+            if(wave2XInimigo[i] === wave2XInimigoMaximo[i] && wave2InimigoVivo[i] === true && laserPego === true) {
                 podeIrParaDireita = false;
                 podeIrParaEsquerda = true;
             }
-            if(wave2XInimigo[i] === wave2XInimigoMinimo[i] && wave2InimigoVivo[i] === true) {
+            if(wave2XInimigo[i] === wave2XInimigoMinimo[i] && wave2InimigoVivo[i] === true && laserPego === true) {
                 podeIrParaEsquerda = false;
                 podeIrParaDireita = true
             }
-            if(podeIrParaDireita === true && wave2YInimigo[i] === wave2YInimigoDesce) {
+            if(podeIrParaDireita === true && wave2YInimigo[i] === wave2YInimigoDesce && laserPego === true) {
                 wave2XInimigo[i] += velocidadeInimigo;
             }
-            if(podeIrParaEsquerda === true && wave2YInimigo[i] === wave2YInimigoDesce) {
+            if(podeIrParaEsquerda === true && wave2YInimigo[i] === wave2YInimigoDesce && laserPego === true) {
                 wave2XInimigo[i] -= velocidadeInimigo;
             }
         }
     }
 }
 function criaTiroInimigo() {
+    //wave 1
     for(let i = 0; i < wave1ImagemInimigos.length; i ++) {
         if(tickRate%64 === 0 && wave1YInimigo[i] === 150) {
             wave1TiroInimigoChamado = true;
@@ -109,21 +110,22 @@ function criaTiroInimigo() {
             wave1TiroInimigoChamado = false;
         }
     }
+    //wave 2
     for(let i = 0; i < wave2ImagemInimigos.length; i ++) {
-        if(tickRate%64 === 0 && wave2YInimigo[i] === 150) {
+        if(tickRate%64 === 0 && wave2YInimigo[i] === 150 && laserPego === true) {
             wave2TiroInimigoChamado = true;
             wave2XTiroInimigo[i] = wave2XInimigo[i];
             wave2YTiroInimigo[i] = wave2YInimigo[i];
             wave2TiroPodeExistir[i] = true;
         }
-        if(wave2TiroInimigoChamado === true && wave2InimigoVivo[i] === true && wave2TiroPodeExistir[i] === true) {
+        if(wave2TiroInimigoChamado === true && wave2InimigoVivo[i] === true && wave2TiroPodeExistir[i] === true && laserPego === true) {
             wave2YTiroInimigo[i] += velocidadeTiro;
             fill(255, 0, 0);
             strokeWeight(1.5);
             stroke(0);
             rect(wave2XTiroInimigo[i] + 13, wave2YTiroInimigo[i] + 20, larguraDoTiro, alturaDoTiro);
         }
-        if(wave2YTiroInimigo[i] > alturaDaTela) {
+        if(wave2YTiroInimigo[i] > alturaDaTela && laserPego === true) {
             wave2TiroInimigoChamado = false;
         }
     }
@@ -144,7 +146,7 @@ function colisaoTiroInimigoComANave() {
     }
     //wave 2
     for(let i = 0; i < wave2ImagemInimigos.length; i ++) {
-        if(xNave + larguraNave > wave2XTiroInimigo[i] && xNave < wave2XTiroInimigo[i] + larguraDoTiro && yNave - alturaNave < wave2YTiroInimigo[i] && yNave + alturaNave > wave2YTiroInimigo[i]) {
+        if(xNave + larguraNave > wave2XTiroInimigo[i] && xNave < wave2XTiroInimigo[i] + larguraDoTiro && yNave - alturaNave < wave2YTiroInimigo[i] && yNave + alturaNave > wave2YTiroInimigo[i] && laserPego === true) {
             naveViva = false;
             wave2TiroPodeExistir[i] = false;
             jogadorPerdeu = true;
