@@ -13,7 +13,7 @@ function horaDoLaserAparecer() {
     if(wave1InimigoVivo[0] === false && wave1InimigoVivo[1] === false && wave1InimigoVivo[2] === false && wave1InimigoVivo[3] === false && laserPego === false) {
         wave1InimigosMortos = true;
     }
-    if(wave1InimigosMortos === true) {
+    if(wave1InimigosMortos === true && jogadorPerdeu === false) {
         imagemLaserAparece = true;
         wave1InimigosMortos = false;
     }
